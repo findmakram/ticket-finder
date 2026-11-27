@@ -29,5 +29,6 @@ To run the project locally:
 ```bash
 git clone https://github.com/your-username/ticket-finder.git
 cd ticket-finder
+cp .env.example .env   # then set REACT_APP_TICKETMASTER_API_KEY
 npm install
 npm start
