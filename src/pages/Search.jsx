@@ -4,6 +4,8 @@ import PostSkeleton from "../components/PostSkeleton";
 import RangeSlider from "../components/RangeSlider";
 import EventDetails from "../ui/EventDetails";
 
+const TICKETMASTER_API_KEY = process.env.REACT_APP_TICKETMASTER_API_KEY;
+
 function Search() {
   const [query, setQuery] = useState(localStorage.getItem("searchQuery") || "");
   const [events, setEvents] = useState([]);
@@ -91,7 +93,7 @@ function Search() {
       const response = await fetch(
         `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${encodeURIComponent(
           query
-        )}&countryCode=US&apikey=qZWhqtApmbArpBw5qrGmoA6xfOZtpYaZ`
+        )}&countryCode=US&apikey=${TICKETMASTER_API_KEY}`
       );
 
       if (!response.ok) {
@@ -120,7 +122,7 @@ function Search() {
 
     try {
       const response = await fetch(
-        `https://app.ticketmaster.com/discovery/v2/events/${eventId}.json?apikey=qZWhqtApmbArpBw5qrGmoA6xfOZtpYaZ`
+        `https://app.ticketmaster.com/discovery/v2/events/${eventId}.json?apikey=${TICKETMASTER_API_KEY}`
       );
 
       if (!response.ok) {
